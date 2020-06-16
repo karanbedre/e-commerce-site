@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { ErrorService } from 'src/utils/error/error.service';
 import { HttpServiceService } from 'src/utils/http/http-service.service';
 import { CommonServiceService } from 'src/utils/common/common-service.service';
-
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 AppCommonModule
 @NgModule({
@@ -22,7 +22,8 @@ AppCommonModule
     BrowserAnimationsModule,
     AppCommonModule,
     RouterModule,
-    HttpModule
+    HttpModule,
+    NgxWebstorageModule.forRoot(),
   ],
   providers: [
     ErrorService,

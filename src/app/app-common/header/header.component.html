@@ -8,7 +8,7 @@
                 <div class="col-sm-5 header-menu text-right">
                     <div class="btn-group cart">
                         <img class="img-responsive dropdown" src="assets/img/cart.png" title="Click to view carts"
-                            alt="Click to view carts" id="cartList" (click)="getAllcarts()" data-toggle="dropdown"
+                            alt="Click to view carts" id="cartList" (click)="getData()" data-toggle="dropdown"
                             data-target="cartList" aria-haspopup="true" aria-expanded="false" />
                         <span *ngIf="cartCount > 0" class="cart-badge" matBadge="{{cartCount}}"
                             matBadgePosition="after"></span>
@@ -19,16 +19,18 @@
                                     <span class="n-name">No Products Added</span>
                                 </div>
                             </li>
-                            <!-- <div style="max-height: 250px; overflow: auto;">
-                  <li *ngFor="let cart of allcarts; let idx=index;"
-                    (click)="cartRead(cart, $event)">
-                    <div class="dropdown-item">
-                      <span class="n-name float-left text-capitalize">{{cart.from}}</span>
-                      <span class="n-date float-right">{{cart.createddate | date: 'dd MMM, HH:mm'}}</span>
-                      <span class="n-cart text-first-caps">{{cart.body}}</span>
-                    </div>
-                  </li>
-                </div> -->
+                            <div style="max-height: 250px; overflow: auto;">
+                                <li *ngFor="let cart of allcarts; let idx=index;">
+                                    <div class="dropdown-item">
+                                        <div class="product-name text-capitalize">{{cart.name}},</div>
+                                        <div class="product-name float-right">{{cart.price}} / item </div>
+                                        <div class="n-date">
+                                            <input type="text" name="cart.id" id="cart.id" value="{{cart.count}}">
+                                        </div>
+                                        <div class="n-date">{{cart.total}}</div>
+                                    </div>
+                                </li>
+                            </div>
                             <!-- (click)="navigateTocart()" -->
                             <li class="text-center p-5">
                                 <span class="text-center n-name ">Checkout Basket</span>
