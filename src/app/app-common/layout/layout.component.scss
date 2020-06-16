@@ -1,0 +1,12 @@
+.header {
+    height: 80px;
+}
+
+.router-content {
+    height:  calc(100vh - 100px);
+    overflow: auto;
+}
+
+.footer {
+    height: 30px;
+}

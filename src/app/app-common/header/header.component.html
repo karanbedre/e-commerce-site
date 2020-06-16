@@ -1,0 +1,44 @@
+<header>
+    <div class="row no-gutter app-header">
+        <div class="col-sm-12">
+            <div class="row no-gutter">
+                <div class="col-sm-7 header-name">
+                    <h3>E-Commerce Site</h3>
+                </div>
+                <div class="col-sm-5 header-menu text-right">
+                    <div class="btn-group cart">
+                        <img class="img-responsive dropdown" src="assets/img/cart.png" title="Click to view carts"
+                            alt="Click to view carts" id="cartList" (click)="getAllcarts()" data-toggle="dropdown"
+                            data-target="cartList" aria-haspopup="true" aria-expanded="false" />
+                        <span *ngIf="cartCount > 0" class="cart-badge" matBadge="{{cartCount}}"
+                            matBadgePosition="after"></span>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="cartList">
+                            <!-- (click)="stopPropagation($event)" -->
+                            <li *ngIf="allcarts.length === 0">
+                                <div class="dropdown-item text-center">
+                                    <span class="n-name">No Products Added</span>
+                                </div>
+                            </li>
+                            <!-- <div style="max-height: 250px; overflow: auto;">
+                  <li *ngFor="let cart of allcarts; let idx=index;"
+                    (click)="cartRead(cart, $event)">
+                    <div class="dropdown-item">
+                      <span class="n-name float-left text-capitalize">{{cart.from}}</span>
+                      <span class="n-date float-right">{{cart.createddate | date: 'dd MMM, HH:mm'}}</span>
+                      <span class="n-cart text-first-caps">{{cart.body}}</span>
+                    </div>
+                  </li>
+                </div> -->
+                            <!-- (click)="navigateTocart()" -->
+                            <li class="text-center p-5">
+                                <span class="text-center n-name ">Checkout Basket</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</header>

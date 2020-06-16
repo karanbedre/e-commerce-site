@@ -1,0 +1,106 @@
+header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 80px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.35);
+    background: #232f3e;
+    z-index: 999;
+    .p-5 {
+        padding: 5px !important;
+    }
+
+    .row {
+        align-items: center;
+        height: 100%;
+    }
+
+    .header-name {
+        float: left;
+
+        h3 {
+            color: white;
+            padding-left: 20px;
+            font-size: 24px;
+            font-weight: normal;
+            margin: 0;
+        }
+    }
+
+    .cart {
+        display: inline-block;
+        padding-right: 30px;
+        min-height: 27px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        .dropdown-item,
+        li {
+            &:focus,
+            &:active {
+                outline: none !important;
+                border: none !important;
+            }
+        }
+
+        img {
+            width: 22px;
+            cursor: pointer;
+        }
+
+        ul {
+            padding: 0px;
+            min-width: 400px;
+
+            li,
+            .dropdown-item {
+                min-height: 60px;
+            }
+
+            li:last-child {
+                cursor: pointer;
+                min-height: 20px;
+            }
+            li:first-child {
+                min-height: 20px;
+            }
+        }
+
+        .n-name {
+            width: 50%;
+        }
+
+        .n-cart {
+            width: 100%;
+            max-width: 315px;
+            padding-top: 15px;
+            white-space: pre-wrap;
+            display: block;
+        }
+    }
+
+    .header-menu {
+        float: right;
+        padding-right: 30px;
+
+        .cart {
+            .dropdown-menu {
+                padding: 0px !important;
+                left: 16px !important;
+            }
+        }
+    }
+}
+
+header .header-menu .mat-badge-content {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+::ng-deep .dropdown-item {
+    // background-color: none !important;
+    &:active,
+    &:focus {
+        background-color: none !important;
+    }
+}
