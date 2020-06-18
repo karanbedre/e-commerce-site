@@ -9,7 +9,9 @@ header {
     .p-5 {
         padding: 5px !important;
     }
-
+    .border-line {
+        border-top: 1px solid black;
+    }
     .row {
         align-items: center;
         height: 100%;
@@ -51,10 +53,17 @@ header {
         ul {
             padding: 0px;
             min-width: 400px;
-
+            li {
+                padding: 10px;
+            }
             li,
             .dropdown-item {
                 min-height: 60px;
+            }
+
+            input {
+                width: 79%;
+                margin-left: 10px;
             }
 
             li:last-child {
@@ -68,14 +77,6 @@ header {
 
         .product-name {
             display: inline;
-        }
-
-        .n-cart {
-            width: 100%;
-            max-width: 315px;
-            padding-top: 15px;
-            white-space: pre-wrap;
-            display: block;
         }
     }
 
@@ -95,12 +96,4 @@ header {
 header .header-menu .mat-badge-content {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-}
-
-::ng-deep .dropdown-item {
-    // background-color: none !important;
-    &:active,
-    &:focus {
-        background-color: none !important;
-    }
 }

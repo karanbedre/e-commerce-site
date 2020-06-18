@@ -1,1 +1,35 @@
-<p>basket works!</p>
+<div class="basket">
+    <div class="col-md-12 breadcrumbs">
+        <h3 [routerLink]="['/shop']" routerLinkActive="router-link-active">Shop <span> <img
+                    src="../../../assets/img/right-arrow.png" alt=""> </span></h3>
+        <h3 class="ml-10">Basket</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let item of cart; let i=index;">
+            <div class="basket-item">
+                <div class="basket-name text-capitalize">{{item.name}}</div>
+                <div class="basket-name float-right">{{item.price}} / item </div>
+                <div class="n-date">
+                    <label for="{{item.id}}">Quanity: </label>
+                    <input type="text" name="{{item.id}}" id="{{item.id}}" value="{{item.count}}"
+                        [appNumber]="{'only-numbers': true}" (keyup)="checkQuantity($event, item)">
+                </div>
+                <div class="basket-name">sub-total: &#8377;{{item.total}}</div>
+                <div class="basket-name float-right"><button (click)="removeFromitem(item)">Remove
+                        from Cart</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="row total" *ngIf="cart.length > 0">
+        <div class="basket-name text-capitalize col-md-2"> Total Items: {{cartCount}}</div>
+        <div class="basket-name float-right">Total Price:
+            &#8377;{{totalSum}}</div>
+    </div>
+
+    <div class="row total" *ngIf="cart.length > 0">
+        <button (click)="buy()">Buy</button>
+    </div>
+    <div class="text-center" *ngIf="cart.length == 0">
+        No Items added
+    </div>
+</div>

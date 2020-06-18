@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppCommonModule } from './app-common/app-common.module';
 import { RouterModule } from '@angular/router';
-import { ErrorService } from 'src/utils/error/error.service';
-import { HttpServiceService } from 'src/utils/http/http-service.service';
-import { CommonServiceService } from 'src/utils/common/common-service.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { ErrorService } from 'src/app/utils/error/error.service';
+import { HttpServiceService } from 'src/app/utils/http/http-service.service';
+import { CommonServiceService } from 'src/app/utils/common/common-service.service';
+import { SuccessBoxComponent } from 'src/app/utils/components/success-box/success-box.component';
+
 
 AppCommonModule
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SuccessBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ AppCommonModule
     HttpServiceService,
     CommonServiceService
   ],
+  entryComponents: [SuccessBoxComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

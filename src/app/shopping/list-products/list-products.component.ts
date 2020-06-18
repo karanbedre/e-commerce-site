@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonServiceService } from 'src/utils/common/common-service.service';
-import { ShopList } from 'src/utils/model/shop';
+import { CommonServiceService } from 'src/app/utils/common/common-service.service';
+import { ShopList } from 'src/app/utils/model/shop';
 import { SessionStorage } from 'ngx-webstorage';
 
 @Component({
@@ -12,10 +12,19 @@ export class ListProductsComponent implements OnInit {
   public shopList = [];
   @SessionStorage('cartList') public cart: any;
   @SessionStorage('cartCount') public cartCount: any;
+  @SessionStorage('totalSum') public totalSum: any;
+
 
   constructor(private commonService: CommonServiceService) { }
 
   ngOnInit() {
+    this.commonService.getSessionStorage().subscribe(res => {
+      this.shopList.map(ele => {
+        if (ele.id == res.id) {
+          ele.quantity = res.quantity;
+        }
+      })
+    });
     this.getData();
   }
 
@@ -26,17 +35,23 @@ export class ListProductsComponent implements OnInit {
       });
       this.cart = this.cart != null ? this.cart : [];
       this.cartCount = this.cartCount != null ? this.cartCount : 0;
-      if (this.cart.length > 0) {
-        this.shopList.forEach(ele => {
-          ele.price = parseInt(ele.price)
-          this.cart.forEach(res => {
-            if (ele.id == res.id) {
-              ele.quantity = res.quantity;
-            }
-          })
-        })
-      }
+      this.totalSum = this.totalSum != null ? this.totalSum : 0
+      this.updateShopList();
+    }, err => {
+      console.log(err);
     });
+  }
+
+  updateShopList() {
+    if (this.cart.length > 0) {
+      this.shopList.forEach(ele => {
+        this.cart.forEach(res => {
+          if (ele.id == res.id) {
+            ele.quantity = res.quantity;
+          }
+        })
+      });
+    }
   }
 
   addToCart(itemData) {
@@ -56,6 +71,11 @@ export class ListProductsComponent implements OnInit {
         }
       });
     }
+    this.totalSum = 0;
+    this.cart.forEach(element => {
+      this.totalSum = this.totalSum + (element.price * element.count)
+    });
+    this.totalSum = this.totalSum;
     this.cart = this.cart;
     this.cartCount++;
     this.cartCount = this.cartCount;

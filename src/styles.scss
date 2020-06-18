@@ -1,9 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-body{
+html {
+    height: 100%;
+}
+body {
     overflow: hidden;
     overflow-x: hidden;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.dropdown-item {
+    // background-color: none !important;
+    &:active,
+    &:focus {
+        background-color: white;
+        color: black;
+    }
+}
+.confirm-delete-dialog {
+    .mat-dialog-container {
+        width: 450px;
+        padding: 0px;
+    }
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.confirm-delete-backdrop {
+    background: rgba(0, 0, 0, 0.5) !important;
+}

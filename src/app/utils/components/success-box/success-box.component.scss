@@ -1,0 +1,25 @@
+.confirmation-container {
+    .confirmation-header {
+        height: 60px;
+        padding: 18px 29px;
+        background-color: #232f3e;
+        p {
+            font-size: 18px;
+            color: white;
+        }
+        img {
+            width: 14px;
+            height: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+    .confirmation-data {
+        padding: 18px 29px;
+        p {
+            font-size: 18px;
+            color: black;
+            margin-top: 20px;
+        }
+    }
+}
