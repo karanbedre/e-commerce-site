@@ -6,13 +6,15 @@ import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { MatBadgeModule } from '@angular/material/badge';
 import { NumberDirective } from './directives/number.directive';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LayoutComponent, NumberDirective],
   imports: [
     CommonModule,
     MatBadgeModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ],
   exports: [LayoutComponent, NumberDirective]
 })

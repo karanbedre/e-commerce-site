@@ -3,6 +3,7 @@ import { SessionStorage } from 'ngx-webstorage';
 import { CommonServiceService } from 'src/app/utils/common/common-service.service';
 import { Router } from '@angular/router';
 import { ShopList } from 'src/app/utils/model/shop';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   @SessionStorage('cartList') public cart: any;
   @SessionStorage('cartCount') public cartCount: any;
   @SessionStorage('totalSum') public totalSum;
-  constructor(private commonService: CommonServiceService, private router: Router) { }
+  constructor(private commonService: CommonServiceService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getData();
@@ -44,6 +45,9 @@ export class HeaderComponent implements OnInit {
     let index = this.cart.findIndex(ele => ele.id == item.id);
     if (parseInt(event.target.value) > parseInt(shopListArray.quantity)) {
       event.target.value = this.cart[index].count;
+      let config = new MatSnackBarConfig();
+      config.duration = 2000
+      this.snackBar.open('Quantity is less in warehouse Sorry!', 'Ok', config);
     } else {
       this.cart[index].quantity = shopListArray.quantity - event.target.value;
       this.cartCount = this.cartCount - this.cart[index].count;

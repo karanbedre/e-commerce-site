@@ -6,7 +6,7 @@ import { ListProductsComponent } from './list-products/list-products.component';
 import { BasketComponent } from './basket/basket.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppCommonModule } from '../app-common/app-common.module';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ListProductsComponent, BasketComponent],
@@ -14,7 +14,8 @@ import { AppCommonModule } from '../app-common/app-common.module';
     CommonModule,
     ShoppingRoutingModule,
     MatDialogModule,
-    AppCommonModule
+    AppCommonModule,
+    MatSnackBarModule
   ]
 })
 export class ShoppingModule { }

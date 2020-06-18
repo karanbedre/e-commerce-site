@@ -4,7 +4,7 @@ import { CommonServiceService } from 'src/app/utils/common/common-service.servic
 import { MatDialog } from '@angular/material/dialog';
 import { ShopList } from 'src/app/utils/model/shop';
 import { SuccessBoxComponent } from 'src/app/utils/components/success-box/success-box.component';
-
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
@@ -16,7 +16,7 @@ export class BasketComponent implements OnInit {
   @SessionStorage('cartCount') public cartCount: any;
   @SessionStorage('totalSum') public totalSum: any;
   constructor(private commonService: CommonServiceService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getData();
@@ -46,6 +46,9 @@ export class BasketComponent implements OnInit {
     let index = this.cart.findIndex(ele => ele.id == item.id);
     if (parseInt(event.target.value) > parseInt(shopListArray.quantity)) {
       event.target.value = this.cart[index].count;
+      let config = new MatSnackBarConfig();
+      config.duration = 2000
+      this.snackBar.open('Quantity is less in warehouse Sorry!', 'Ok', config);
     } else {
       this.cart[index].quantity = shopListArray.quantity - event.target.value;
       this.cartCount = this.cartCount - this.cart[index].count;
