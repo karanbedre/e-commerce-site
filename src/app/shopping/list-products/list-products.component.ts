@@ -63,10 +63,12 @@ export class ListProductsComponent implements OnInit {
       itemData['total'] = parseInt(itemData.price);
       this.cart.push(itemData);
     } else {
+      
       this.cart.forEach((element) => {
         if (element.id == storeData[0].id) {
-          element.count++;
           itemData.quantity--;
+          element.count++;
+          element.quantity = itemData.quantity
           element.total += parseInt(storeData[0].price);
         }
       });
